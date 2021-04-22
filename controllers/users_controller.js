@@ -28,6 +28,7 @@ module.exports.signIn = function(req,res){
     })
 }
 
+
 // get sign up data
 module.exports.create = function(req,res){
     if(req.body.password != req.body.confirm_password){

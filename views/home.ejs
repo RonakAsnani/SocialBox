@@ -1,4 +1,30 @@
-
 <body>
     <h1>SocialBox / <%=title%></h1>
 </body>
+
+<section id="feed-posts">
+    <h4>Posts</h4>
+    <form action="/posts/create" id="new-post-form" method="POST">
+        <textarea placeholder="Type here..." name="content" id="" cols="30" rows="3"></textarea>
+        <input type="submit" value="post">
+    </form>
+
+    <div id="post-list-controller">
+        <ul>
+            <% for(post of posts){ %>
+                
+                <li>
+                    <p>
+                        <%= post.content %>
+                        <br>
+                        <small>
+                            <%= post.user.name %>
+                        </small>
+                    </p>
+                    
+                </li>
+                    
+                <%} %>
+        </ul>
+    </div>
+</section>
