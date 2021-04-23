@@ -15,6 +15,19 @@ module.exports.create = async function(req,res){
         });
         post.comments.push(comment);
         post.save();
+
+        if (req.xhr){
+            // Similar for comments to fetch the user's id!
+            comment = await comment.populate('user', 'name').execPopulate();
+
+            return res.status(200).json({
+                data: {
+                    comment: comment
+                },
+                message: "Post created!"
+            });
+        }
+
         req.flash('success','Comment added')
         res.redirect('/');
     }
@@ -31,8 +44,18 @@ module.exports.destroy = async function(req,res){
         if(comment.user == req.user.id){
             let postId = comment.post;
             comment.remove();
-            await Post.findByIdAndUpdate(postId,{$pull:{comments:req.params.id}});
+            let post = await Post.findByIdAndUpdate(postId,{$pull:{comments:req.params.id}});
             req.flash('success','Comment deleted')
+
+            if (req.xhr){
+                return res.status(200).json({
+                    data: {
+                        comment_id: req.params.id
+                    },
+                    message: "Post deleted"
+                });
+            }
+
             return res.redirect('back');
             
             }else{
@@ -40,7 +63,7 @@ module.exports.destroy = async function(req,res){
             }
     }catch(err){
         req.flash('error','Cannot delete comment')
-        res.redirect('/');
+        return;
     }
    
 }
