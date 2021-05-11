@@ -2,14 +2,18 @@
   display: flex;
   min-height: 100%;
   #feed-posts {
-    width: 70%;
+    width: 75%;
     padding: 10px;
   }
 
   #users-friends {
-    width: 30%;
+    width: 25%;
     padding: 10px;
     border-left: 1px solid lightgray;
     min-height: 100%;
+    background-color: grey;
+    h4 {
+      color: green;
+    }
   }
 }

@@ -1,3 +1,16 @@
 body {
-  background-color: lightblue;
+  .profile-center {
+    width: 25%;
+    margin: 30px auto;
+    text-align: center;
+    background-color: rgb(226, 100, 41);
+    border-radius: 20px;
+    padding: 15px 0;
+    color: white;
+  }
+  input {
+    margin: 10px 0;
+    border-radius: 2px;
+    padding: 2px;
+  }
 }

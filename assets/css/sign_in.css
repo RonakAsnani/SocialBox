@@ -1,0 +1,20 @@
+.sign-in-form {
+  width: 25%;
+  margin: 30px auto;
+  text-align: center;
+  background-color: rgb(68, 146, 236);
+  border-radius: 20px;
+  padding: 15px 0;
+}
+.google-button {
+  text-decoration: none;
+  color: orange;
+  background-color: white;
+  border-radius: 2px;
+  padding: 5px;
+}
+input {
+  margin: 5px 0;
+  border-radius: 2px;
+  padding: 2px;
+}
