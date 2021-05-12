@@ -1,114 +1,102 @@
-const User = require('../models/user');
-const fs = require('fs');
-const path = require('path');
+const User = require("../models/user");
+const fs = require("fs");
+const path = require("path");
 
-module.exports.profile = function(req,res){
-    User.findById(req.params.id,function(err,user){
-        return res.render('profile',{
-            title: "User Profile",
-            profile_user: user
-        })
-    })
-    
-}
+module.exports.profile = function (req, res) {
+  User.findById(req.params.id, function (err, user) {
+    return res.render("profile", {
+      title: "User Profile",
+      profile_user: user,
+    });
+  });
+};
 
-module.exports.update = async function(req,res){
-    if(req.user.id == req.params.id){
-        try{
-
-            let user = await User.findById(req.params.id)
-            User.uploadedAvatar(req,res,function(err){
-                if(err){
-                    console.log('Multer error',err);
-                }
-                user.name = req.body.name;
-                user.email = req.body.email;
-                if(req.file){
-                    if(user.avatar){
-                        fs.unlinkSync(path.join(__dirname , '..',user.avatar ));
-                    }
-                    // saving path of uploaded file in to avatar field in user
-                    user.avatar = User.avatarPath + '/' + req.file.filename
-                }
-                user.save();
-                return res.redirect('back');
-            })
-
-        }catch(err){
-            req.flash('error', err);
-        return res.redirect('back');
+module.exports.update = async function (req, res) {
+  if (req.user.id == req.params.id) {
+    try {
+      let user = await User.findById(req.params.id);
+      User.uploadedAvatar(req, res, function (err) {
+        if (err) {
+          console.log("Multer error", err);
         }
-        // User.findByIdAndUpdate(req.params.id,req.body,function(err,user){
-        //     req.flash('success','User updated')
-        //     return res.redirect('back');
-        // })
-    }else{
-        req.flash('error','Cannot update the user');
-        return res.status(401).send('Unauthorized');
+        user.name = req.body.name;
+        user.email = req.body.email;
+        if (req.file) {
+          if (user.avatar) {
+            fs.unlinkSync(path.join(__dirname, "..", user.avatar));
+          }
+          // saving path of uploaded file in to avatar field in user
+          user.avatar = User.avatarPath + "/" + req.file.filename;
+        }
+        user.save();
+        return res.redirect("back");
+      });
+    } catch (err) {
+      req.flash("error", err);
+      return res.redirect("back");
     }
-}
+  } else {
+    req.flash("error", "Cannot update the user");
+    return res.status(401).send("Unauthorized");
+  }
+};
 
 // render signup page
-module.exports.signUp = function(req,res){
+module.exports.signUp = function (req, res) {
+  if (req.isAuthenticated()) {
+    return res.redirect("/users/profile");
+  }
 
-    if(req.isAuthenticated()){
-        return res.redirect('/users/profile');
-    }
-
-    return res.render('user_sign_up',{
-        title: "SocialBox | Sign Up"
-    })
-}
+  return res.render("user_sign_up", {
+    title: "SocialBox | Sign Up",
+  });
+};
 
 // render sign in page
-module.exports.signIn = function(req,res){
-
-    if(req.isAuthenticated()){
-        return res.redirect('/users/profile');
-    }
-    return res.render("user_sign_in",{
-        title: "SocialBox | Sign In"
-    })
-}
-
+module.exports.signIn = function (req, res) {
+  if (req.isAuthenticated()) {
+    return res.redirect("/users/profile");
+  }
+  return res.render("user_sign_in", {
+    title: "SocialBox | Sign In",
+  });
+};
 
 // get sign up data
-module.exports.create = function(req,res){
-    if(req.body.password != req.body.confirm_password){
-        req.flash('error','Password does not match!')
-        return res.redirect('back');
+module.exports.create = function (req, res) {
+  if (req.body.password != req.body.confirm_password) {
+    req.flash("error", "Password does not match!");
+    return res.redirect("back");
+  }
+  User.findOne({ email: req.body.email }, function (err, user) {
+    if (err) {
+      req.flash("error", "User already exist");
+      return;
     }
-    User.findOne({email : req.body.email},function(err,user){
-        if(err){
-            req.flash('error','User already exist')
-            return;
+    if (!user) {
+      User.create(req.body, function (err, user) {
+        if (err) {
+          req.flash("error", "Cannot create user!!");
+          return;
         }
-        if(!user){
-            User.create(req.body,function(err,user){
-                if(err){
-                    req.flash('error','Cannot create user!!')
-                    return;
-                }
-                req.flash('success','User created')
-                return res.redirect('/users/sign-in');
-            })
-        }else{
-            req.flash('error','User already exist')
-            return res.redirect('back');
-        }
-    })
-
-}
+        req.flash("success", "User created");
+        return res.redirect("/users/sign-in");
+      });
+    } else {
+      req.flash("error", "User already exist");
+      return res.redirect("back");
+    }
+  });
+};
 
 //sign in and create a session for the user
-module.exports.createSession = function(req,res){
-    req.flash('success','Logged in Successfully');
-    return res.redirect('/');
-}
+module.exports.createSession = function (req, res) {
+  req.flash("success", "Logged in Successfully");
+  return res.redirect("/");
+};
 
-module.exports.destroySession = function(req,res){
-    req.logout();
-    req.flash('success','You have Logged out');
-    return res.redirect('/');
-}
-
+module.exports.destroySession = function (req, res) {
+  req.logout();
+  req.flash("success", "You have Logged out");
+  return res.redirect("/");
+};

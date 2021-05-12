@@ -2,7 +2,12 @@
 
 <div class="profile-center">
   <h1>Profile</h1>
-  <img src="<%= user.avatar%>" alt="<%=user.name%>" width="100" />
+  <img
+    style="border-radius: 100%"
+    src="<%= user.avatar%>"
+    alt="<%=user.name%>"
+    width="100"
+  />
 
   <% if(user.id == profile_user.id) {%>
   <form
