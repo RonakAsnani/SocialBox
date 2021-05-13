@@ -1,14 +1,44 @@
 #home-container {
   display: flex;
-  min-height: 100%; }
+  min-height: 100%;
+  background-color: #e9e6f5; }
   #home-container #feed-posts {
     width: 75%;
-    padding: 10px; }
-  #home-container #users-friends {
-    width: 25%;
-    padding: 10px;
-    border-left: 1px solid lightgray;
-    min-height: 100%;
-    background-color: grey; }
-    #home-container #users-friends h4 {
-      color: green; }
+    padding: 20px;
+    text-align: center; }
+    #home-container #feed-posts ul {
+      list-style: none;
+      padding: 0; }
+    #home-container #feed-posts #post-form {
+      border: white 1px solid;
+      padding: 20px 0;
+      background-color: white;
+      border-radius: 2px;
+      margin: 0 15%; }
+      #home-container #feed-posts #post-form #post-input {
+        border: none;
+        border-bottom: 1px solid black;
+        margin: 5px; }
+      #home-container #feed-posts #post-form #post-button {
+        background-color: orange;
+        color: white;
+        border: 1px solid orange;
+        padding: 5px;
+        width: 20%; }
+    #home-container #feed-posts #posts-list-container {
+      text-align: left;
+      border: white 1px solid;
+      padding: 0;
+      background-color: white;
+      border-radius: 2px;
+      margin: 10px 15% 200px 15%; }
+  #home-container #user-friends {
+    max-width: 25%;
+    padding: 10px 20px;
+    background-color: white;
+    border-radius: 5px;
+    margin: 10px 10px 10px 0;
+    height: 100%; }
+    #home-container #user-friends p a {
+      text-decoration: none;
+      color: orange; }

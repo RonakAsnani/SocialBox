@@ -1,0 +1,31 @@
+.comment {
+  margin: 5px;
+  padding: 3px 10px;
+  background-color: rgb(241, 236, 236);
+  color: orange;
+
+  h3 {
+    padding: 0;
+    margin: 0;
+  }
+  #comment-name {
+    color: grey;
+    font-size: 10px;
+    margin: 0;
+    padding: 0;
+  }
+  p {
+    margin: 5px;
+    small {
+      a {
+        position: relative;
+        left: 95%;
+        background-color: orange;
+        color: white;
+        text-decoration: none;
+        padding: 3px;
+        border-radius: 100%;
+      }
+    }
+  }
+}

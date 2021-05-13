@@ -2,17 +2,24 @@
 
 <div id="home-container">
   <section id="feed-posts">
-    <h4>Posts</h4>
     <% if(locals.user){ %>
-    <form action="/posts/create" id="new-post-form" method="POST">
+    <form
+      id="post-form"
+      action="/posts/create"
+      id="new-post-form"
+      method="POST"
+    >
       <textarea
+        id="post-input"
         name="content"
-        cols="30"
+        cols="60"
         rows="3"
         placeholder="Type Here..."
         required
       ></textarea>
-      <input type="submit" value="Post" />
+
+      <br />
+      <input id="post-button" type="submit" value="Post" />
     </form>
     <% } %>
 
@@ -25,7 +32,7 @@
   </section>
 
   <section id="user-friends">
-    <h4>Friends</h4>
+    <h2 style="color: grey; text-align: center">Friends</h2>
     <% for(u of all_users){%>
     <p>
       <a href="/users/profile/<%= u.id %>"><%= u.name %></a>

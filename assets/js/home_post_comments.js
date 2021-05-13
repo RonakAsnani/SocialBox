@@ -38,16 +38,16 @@ class PostComments {
     });
   }
   newCommentDom(comment) {
-    return $(`<li id="comment-${comment._id}">
+    return $(`<li class="comment" id="comment-${comment._id}">
           <p>
     
               <small>
-                  <a  class="delete-comment-button" href="/comments/destroy/${comment._id}">Delete</a>
+                  <a  class="delete-comment-button" href="/comments/destroy/${comment._id}">X</a>
               </small>
            
-              ${comment.content}
+              <h3>${comment.content}</h3>
               <br>
-              <small>
+              <small id="comment-name">
               ${comment.user.name}
               </small>
              
