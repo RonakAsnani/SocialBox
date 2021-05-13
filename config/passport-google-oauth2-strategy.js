@@ -7,6 +7,7 @@ const User = require("../models/user");
 passport.use(
   new googleStrategy(
     {
+      //changed and hidden
       clientID: "**********************",
       clientSecret: "*********",
       callbackURL: "http://localhost:8000/users/auth/google/callback",
