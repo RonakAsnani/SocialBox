@@ -1,10 +1,11 @@
 {
   // method to submit the form data for new post using AJAX
   let createPost = function () {
-    let newPostForm = $("#new-post-form");
+    let newPostForm = $("#post-form");
 
     newPostForm.submit(function (e) {
       e.preventDefault();
+      console.log("gd");
 
       $.ajax({
         type: "post",
@@ -39,7 +40,7 @@
   let newPostDom = function (post) {
     return $(`<li id="post-${post._id}">
                     <p>
-                    <small><img src="https://www.flaticon.com/svg/vstatic/svg/3135/3135715.svg?token=exp=1620976397~hmac=b450721eea4c3f84e698f875db3a48b0" alt="Avatar">
+                    <small id="post-user"><img src="https://www.flaticon.com/svg/vstatic/svg/3135/3135715.svg?token=exp=1620976397~hmac=b450721eea4c3f84e698f875db3a48b0" alt="Avatar">
                     ${post.user.name}
                     </small>
                         <small>
@@ -58,9 +59,9 @@
                     <div class="post-comments">
                         
                             <form id="post-${post._id}-comments-form" action="/comments/create" method="POST">
-                                <input type="text" name="content" placeholder="Type Here to add comment..." required>
+                                <input id="comment-content" type="text" name="content" placeholder="Type Here to add comment..." required>
                                 <input type="hidden" name="post" value="${post._id}" >
-                                <input type="submit" value="Add Comment">
+                                <input id="comment-post" type="submit" value="Add Comment">
                             </form>
                
                 

@@ -43,6 +43,7 @@ class PostComments {
     return $(`<li class="comment" id="comment-${comment._id}">
           <p>
           <small id="comment-name">
+          <img src="https://www.flaticon.com/svg/vstatic/svg/3135/3135715.svg?token=exp=1620976397~hmac=b450721eea4c3f84e698f875db3a48b0" alt="Avatar"> 
           ${comment.user.name}
           </small>
           <a data-likes="0" class="toggle-like-button" href="/likes/toggle/?id=${comment._id}&type=Comment">
