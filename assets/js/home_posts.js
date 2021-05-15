@@ -18,6 +18,8 @@
           // call the create comment class
           new PostComments(data.data.post._id);
 
+          new ToggleLike($(" .toggle-like-button", newPost));
+
           new Noty({
             theme: "relax",
             text: "Post published!",
@@ -49,7 +51,9 @@
                         
                     </p>
                     <hr>
-  <img src="https://www.flaticon.com/svg/vstatic/svg/1077/1077035.svg?token=exp=1620977848~hmac=f2b63d09a0099aa557195be40349d866" alt="Like"><span>   32</span>
+    <a data-likes="0" class="toggle-like-button" href="/likes/toggle/?id=${post._id}&type=Post">
+  <img src="https://www.flaticon.com/svg/vstatic/svg/1077/1077035.svg?token=exp=1620977848~hmac=f2b63d09a0099aa557195be40349d866" alt="Like"><span>   0 </span>
+</a>
   <hr>
                     <div class="post-comments">
                         

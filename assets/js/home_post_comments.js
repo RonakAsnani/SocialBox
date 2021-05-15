@@ -23,6 +23,8 @@ class PostComments {
           let newComment = pSelf.newCommentDom(data.data.comment);
           $(`#post-comments-${postId}`).prepend(newComment);
           pSelf.deleteComment($(" .delete-comment-button", newComment));
+
+          new ToggleLike($(" .toggle-like-button", newComment));
           new Noty({
             theme: "relax",
             text: "Comment published!",
@@ -43,7 +45,9 @@ class PostComments {
           <small id="comment-name">
           ${comment.user.name}
           </small>
-          <img src="https://www.flaticon.com/svg/vstatic/svg/1077/1077035.svg?token=exp=1620977848~hmac=f2b63d09a0099aa557195be40349d866" alt="Like"><span>   32</span>
+          <a data-likes="0" class="toggle-like-button" href="/likes/toggle/?id=${comment._id}&type=Comment">
+          <img src="https://www.flaticon.com/svg/vstatic/svg/1077/1077035.svg?token=exp=1620977848~hmac=f2b63d09a0099aa557195be40349d866" alt="Like"><span>   0</span>
+        </a>
               <small>
                   <a  class="delete-comment-button" href="/comments/destroy/${comment._id}">X</a>
               </small>

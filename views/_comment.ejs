@@ -2,9 +2,16 @@
 
 <li class="comment" id="comment-<%= comment._id %>">
   <p>
-    <small id="comment-name"> <%= comment.user.name %> </small>
+    <small id="comment-name"><img src="https://www.flaticon.com/svg/vstatic/svg/3135/3135715.svg?token=exp=1620976397~hmac=b450721eea4c3f84e698f875db3a48b0" alt="Avatar"> <%=comment.user.name %> </small>
  
-    <img src="https://www.flaticon.com/svg/vstatic/svg/1077/1077035.svg?token=exp=1620977848~hmac=f2b63d09a0099aa557195be40349d866" alt="Like"><span>   32</span>
+    <% if(locals.user) {%>
+      <a data-likes="<%=comment.likes.length%>" class="toggle-like-button" href="/likes/toggle/?id=<%=comment._id%>&type=Comment">
+        <img src="https://www.flaticon.com/svg/vstatic/svg/1077/1077035.svg?token=exp=1620977848~hmac=f2b63d09a0099aa557195be40349d866" alt="Like"><span>   <%=comment.likes.length%></span>
+      </a>
+    <%} else {%>
+      <img src="https://www.flaticon.com/svg/vstatic/svg/1077/1077035.svg?token=exp=1620977848~hmac=f2b63d09a0099aa557195be40349d866" alt="Like"><span>   <%=comment.likes.length%></span>
+    <%}%>
+    
     <% if((locals.user)&&(locals.user.id == comment.user.id)){ %>
     <small>
       <a class="delete-comment-button" href="/comments/destroy/<%=comment.id%>"

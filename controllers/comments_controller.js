@@ -1,6 +1,7 @@
 const Comment = require("../models/comment");
 const Post = require("../models/post");
 const commentsMailer = require("../mailers/comments_mailer");
+const Like = require("../models/like");
 //const queue = require("../config/kue");
 //const commentEmailWorker = require("../workers/comment_email_worker");
 
@@ -17,7 +18,7 @@ module.exports.create = async function (req, res) {
       post.comments.push(comment);
       post.save();
       comment = await comment.populate("user", "name email").execPopulate();
-      commentsMailer.newComment(comment);
+      //commentsMailer.newComment(comment);
       // let job = queue.create("emails", comment).save(function (err) {
       //   if (err) {
       //     console.log("error in creating queue", err);
@@ -54,6 +55,8 @@ module.exports.destroy = async function (req, res) {
       let post = await Post.findByIdAndUpdate(postId, {
         $pull: { comments: req.params.id },
       });
+
+      await Like.deleteMany({ likeable: comment._id, onModel: "Comment" });
       req.flash("success", "Comment deleted");
 
       if (req.xhr) {
