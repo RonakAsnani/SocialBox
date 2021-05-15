@@ -14,4 +14,13 @@ body {
     border-radius: 2px;
     padding: 2px;
   }
+  #friend-button {
+    color: orange;
+    background-color: white;
+    border: none;
+    padding: 5px;
+    width: 100px;
+    cursor: pointer;
+    text-decoration: none;
+  }
 }
