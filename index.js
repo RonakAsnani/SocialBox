@@ -18,6 +18,12 @@ const sassMiddleware = require("node-sass-middleware");
 const flash = require("connect-flash");
 const customMware = require("./config/middleware");
 
+// setup the chat server to br used  with socket.io
+const chatServer = require("http").Server(app);
+const chatSockets = require("./config/chat_sockets").chatSockets(chatServer);
+chatServer.listen(5000);
+console.log("chat server");
+
 app.use(
   sassMiddleware({
     src: "./assets/scss",
