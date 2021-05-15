@@ -1,8 +1,8 @@
 .sign-in-form {
-  width: 25%;
+  width: 50%;
   margin: 30px auto;
   text-align: center;
-  background-color: rgb(68, 146, 236);
+  background-color: #6200ee;
   border-radius: 20px;
   padding: 15px 0;
 }

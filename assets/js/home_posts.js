@@ -37,17 +37,20 @@
   let newPostDom = function (post) {
     return $(`<li id="post-${post._id}">
                     <p>
-                        
+                    <small><img src="https://www.flaticon.com/svg/vstatic/svg/3135/3135715.svg?token=exp=1620976397~hmac=b450721eea4c3f84e698f875db3a48b0" alt="Avatar">
+                    ${post.user.name}
+                    </small>
                         <small>
                             <a class="delete-post-button"  href="/posts/destroy/${post._id}">X</a>
                         </small>
                        
                         ${post.content}
                         <br>
-                        <small>
-                        ${post.user.name}
-                        </small>
+                        
                     </p>
+                    <hr>
+  <img src="https://www.flaticon.com/svg/vstatic/svg/1077/1077035.svg?token=exp=1620977848~hmac=f2b63d09a0099aa557195be40349d866" alt="Like"><span>   32</span>
+  <hr>
                     <div class="post-comments">
                         
                             <form id="post-${post._id}-comments-form" action="/comments/create" method="POST">

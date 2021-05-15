@@ -1,16 +1,21 @@
 li {
-  background-color: orange;
-  color: white;
+  background-color: white;
+  color: orange;
   margin: 5px;
   padding: 5px;
   .delete-post-button {
     position: relative;
-    left: 95%;
-    background-color: white;
-    color: orange;
+    left: 80%;
+    background-color: orange;
+    color: white;
     padding: 4px;
     border-radius: 100%;
     text-decoration: none;
+  }
+  img {
+    height: 15px;
+    width: 15px;
+    cursor: pointer;
   }
 
   h1 {
@@ -18,10 +23,15 @@ li {
     margin: 2px 0;
   }
   #post-user {
-    font-size: 12px;
+    font-size: 18px;
     color: grey;
     margin: 0;
     padding: 0;
+    img {
+      border-radius: 100%;
+      height: 20px;
+      width: 20px;
+    }
   }
 
   .post-comments {
@@ -29,12 +39,12 @@ li {
       #comment-content {
         border: none;
         border-bottom: 1px solid grey;
-        background-color: orange;
+        background-color: white;
         width: 90%;
         margin: 5px;
       }
       #comment-post {
-        background-color: white;
+        background-color: rgb(241, 236, 236);
         color: orange;
         border: 1px solid white;
         margin: 5px;

@@ -8,14 +8,19 @@
     margin: 0; }
   .comment #comment-name {
     color: grey;
-    font-size: 10px;
+    font-size: 12px;
     margin: 0;
     padding: 0; }
   .comment p {
     margin: 5px; }
+    .comment p img {
+      height: 10px;
+      width: 10px; }
+    .comment p span {
+      font-size: 12px; }
     .comment p small a {
       position: relative;
-      left: 95%;
+      left: 85%;
       background-color: orange;
       color: white;
       text-decoration: none;

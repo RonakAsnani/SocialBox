@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   padding: 0 10px;
-  background: #2196f3;
+  background: #6200ee;
   color: white;
   box-shadow: 1px 1px 1px 1px lightgrey; }
   #layout-header nav .mini-logo p {
@@ -16,5 +16,5 @@
       margin-right: 10px;
       list-style-type: none; }
   #layout-header nav a {
-    color: white;
+    color: orange;
     text-decoration: none; }

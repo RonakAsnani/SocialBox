@@ -27,9 +27,9 @@
         width: 20%; }
     #home-container #feed-posts #posts-list-container {
       text-align: left;
-      border: white 1px solid;
+      border: transparent 1px solid;
       padding: 0;
-      background-color: white;
+      background-color: transparent;
       border-radius: 2px;
       margin: 10px 15% 200px 15%; }
   #home-container #user-friends {

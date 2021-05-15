@@ -1,6 +1,6 @@
 #layout-footer {
-  color: white;
-  background: #2196f3;
+  color: orange;
+  background: #6200ee;
   padding: 5px 10px;
   display: flex;
   justify-content: flex-start;
@@ -8,7 +8,7 @@
   bottom: 0;
   width: 100%; }
   #layout-footer a {
-    color: white;
+    color: orange;
     text-decoration: none; }
   #layout-footer .footer-nav ul {
     list-style: none; }

@@ -40,16 +40,17 @@ class PostComments {
   newCommentDom(comment) {
     return $(`<li class="comment" id="comment-${comment._id}">
           <p>
-    
+          <small id="comment-name">
+          ${comment.user.name}
+          </small>
+          <img src="https://www.flaticon.com/svg/vstatic/svg/1077/1077035.svg?token=exp=1620977848~hmac=f2b63d09a0099aa557195be40349d866" alt="Like"><span>   32</span>
               <small>
                   <a  class="delete-comment-button" href="/comments/destroy/${comment._id}">X</a>
               </small>
            
               <h3>${comment.content}</h3>
-              <br>
-              <small id="comment-name">
-              ${comment.user.name}
-              </small>
+             
+              
              
           </p> 
       </li>`);

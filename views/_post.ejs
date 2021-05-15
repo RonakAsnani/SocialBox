@@ -2,14 +2,18 @@
 
 <li id="post-<%= post._id %>">
   <p>
+    <small id="post-user"><img src="https://www.flaticon.com/svg/vstatic/svg/3135/3135715.svg?token=exp=1620976397~hmac=b450721eea4c3f84e698f875db3a48b0" alt="Avatar"> <%= post.user.name %> </small>
     <% if (locals.user && locals.user.id == post.user.id){ %>
     <small>
+      
       <a class="delete-post-button" href="/posts/destroy/<%= post.id %>">X</a>
     </small>
-   <% } %> <h1>Post:- <%= post.content %></h1>
+   <% } %> <h1> <%= post.content %></h1>
 
-    <small id="post-user"> <%= post.user.name %> </small>
+    
   </p>
+  <hr>
+  <img src="https://www.flaticon.com/svg/vstatic/svg/1077/1077035.svg?token=exp=1620977848~hmac=f2b63d09a0099aa557195be40349d866" alt="Like"><span>   32</span>
   <hr>
   <div class="post-comments">
     <% if (locals.user){ %>
