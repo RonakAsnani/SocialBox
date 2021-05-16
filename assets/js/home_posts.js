@@ -47,7 +47,7 @@
                             <a class="delete-post-button"  href="/posts/destroy/${post._id}">X</a>
                         </small>
                        
-                        ${post.content}
+                        <h1>${post.content}</h1>
                         <br>
                         
                     </p>

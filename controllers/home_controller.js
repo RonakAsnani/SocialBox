@@ -19,7 +19,7 @@ module.exports.home = async function (req, res) {
     // .populate("likes");
 
     let users = await User.find({});
-
+    //console.log(process.env);
     return res.render("home.ejs", {
       title: "SocialBox: Home",
       posts: posts,

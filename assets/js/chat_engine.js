@@ -49,11 +49,11 @@ class ChatEngine {
           html: data.message,
         })
       );
-      newMessage.append(
-        $("<sub>", {
-          html: data.user_email,
-        })
-      );
+      // newMessage.append(
+      //   $("<sub>", {
+      //     html: data.user_email,
+      //   })
+      // );
       newMessage.addClass(messageType);
 
       $("#chat-messages-list").append(newMessage);

@@ -1,0 +1,14 @@
+#layout-footer {
+  color: orange;
+  background: #6200ee;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: flex-start;
+  position: fixed;
+  bottom: 0;
+  width: 100%; }
+  #layout-footer a {
+    color: orange;
+    text-decoration: none; }
+  #layout-footer .footer-nav ul {
+    list-style: none; }
